@@ -24452,7 +24452,7 @@ const dataExpected = {
 
     "AIRTRK": {
       "WAR": {
-        // "CodingScheme": "WAR",
+        "codingScheme": "WAR",
         "battleDimension": "A",
         "code": ["------", "M-----"]
       }
@@ -24479,12 +24479,13 @@ function createReversedData(standartJson) {
         Object.assign(data[codeSchemeSymbol], {
           [battleDimension] : {}
         });
+
         Object.assign(
           data[codeSchemeSymbol][battleDimension], {
-            [codeScheme] : {
+              "codingScheme": codeScheme,
               "code": [],
               "battle dimension": battleDimension
-            }}
+            }
         );
 
         mainIconData['main icon'].forEach((dataMainIcon) => {
@@ -24492,7 +24493,6 @@ function createReversedData(standartJson) {
           data
             [codeSchemeSymbol]
             [battleDimension]
-            [codeScheme]
             ["code"].push(code)
         })
       }
