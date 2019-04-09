@@ -24445,15 +24445,16 @@ const dataExpected = {
   "S": {
     "SPC": {
       "WAR": {
-        /*"battle dimension"*/
-        "P": ["------", "S-----"]/*"code"*/
+        "battleDimension": "P",
+        "code": ["------", "S-----"]
       }
     },
 
     "AIRTRK": {
       "WAR": {
-        /*"battle dimension"*/
-        "A": ["------", "M-----"]/*"code"*/
+        // "CodingScheme": "WAR",
+        "battleDimension": "A",
+        "code": ["------", "M-----"]
       }
     }
   }
@@ -24461,7 +24462,7 @@ const dataExpected = {
 
 const data = {};
 
-function handleRecursive(standartJson) {
+function createReversedData(standartJson) {
   Object.keys(standartJson).forEach((codeScheme) => {
     //console.log(codeScheme) //3
     Object.keys(standartJson[codeScheme]).forEach((battleDimension) => {
@@ -24471,27 +24472,48 @@ function handleRecursive(standartJson) {
         const codeSchemeSymbol = [mainIconData['main icon'][0]['code scheme']];
         const battleDimensionSymbol = mainIconData['main icon'][0]['battle dimension']
 
-        if(!data[codeSchemeSymbol]) {Object.assign(data, {[codeSchemeSymbol] : {} })}
+        if(!data[codeSchemeSymbol]) {Object.assign(data, {
+          [codeSchemeSymbol] : {}
+        })}
 
-        Object.assign(data[codeSchemeSymbol], {[battleDimension] : {} });
+        Object.assign(data[codeSchemeSymbol], {
+          [battleDimension] : {}
+        });
         Object.assign(
-          data[codeSchemeSymbol][battleDimension],
-          {[codeScheme] : {
-              [battleDimensionSymbol]: []
+          data[codeSchemeSymbol][battleDimension], {
+            [codeScheme] : {
+              "code": [],
+              "battle dimension": battleDimension
             }}
         );
 
         mainIconData['main icon'].forEach((dataMainIcon) => {
           const code = dataMainIcon.code;
-          data[codeSchemeSymbol][battleDimension][codeScheme][battleDimensionSymbol].push(code)
+          data
+            [codeSchemeSymbol]
+            [battleDimension]
+            [codeScheme]
+            ["code"].push(code)
         })
       }
     })
   })
 }
 
-handleRecursive(standartJson);
-console.log(data)
+createReversedData(standartJson);
 
-const exampleCodeIcon = 'SPPA--------';
+console.log(data)
+console.log('~~~~~~~~~~~~~~~~~~~')
+
+function getIdForDropdown(iconCode) {
+  const codingSchemeCode = iconCode[0];
+  const affiliationCode = iconCode[1];
+  const battleDimensionCode = iconCode[2];
+  const statusCode = iconCode[3];
+  const functionIdCode = iconCode.substr(4, 6);
+
+  const codingSchemeData = data[codingSchemeCode];
+  console.log(codingSchemeData)
+}
+getIdForDropdown('SPPA--------');
 
