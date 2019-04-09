@@ -1,0 +1,45 @@
+.header_wrap
+  height: 200px
+  background: #fff linear-gradient(0deg, rgba(231,254,255,1) 0%, rgba(231,254,255,1) 1%, rgba(252,255,255,1) 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcffff', endColorstr='#e7feff',GradientType=0 )
+  .header_bg
+    height: 100%
+    background-image: url("../img/clouds.svg")
+    background-size: cover
+  .header_content
+    display: flex
+    justify-content: space-between
+    .logo
+      display: block
+      width: 427px
+      height: auto
+      padding-top: 40px
+    .feedback
+      display: flex
+      flex-direction: row
+      align-items: flex-end
+      padding-bottom: 62px
+      .rate
+        display: flex
+        ul
+          display: flex
+        li + li
+          margin-left: 6px
+        img
+          width: 25px
+    .rate_current
+      margin-left: 22px
+      color: #005070
+      display: flex
+      .current
+        font: 22px $UbuntuMedium
+      .current_max
+        color: #00b1fa
+        font-size: 10px
+        padding-top: 3px
+    .feedback_company
+      margin-left: 47px
+      width: 266px
+  .header_separate
+    height: 55px
+    background-color: #00b1fa

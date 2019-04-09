@@ -1,0 +1,107 @@
+.partner
+  padding: 136px 0
+  position: relative
+  overflow: hidden
+  &:before
+    z-index: -1
+    content: ''
+    display: block
+    width: 100%
+    height: 998px
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    background: linear-gradient(349deg, rgb(255, 255, 255) 50%, rgba(255,255,255,0) 50%)
+  .partner_wrap
+    display: flex
+    justify-content: space-between
+  .info
+    width: 710px
+    height: 740px
+    background-color: #fff
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.17)
+    padding: 89px 78px 74px
+    text-align: left
+    position: relative
+    span
+      color: #333333
+      width: 60%
+      font: 40px $UbuntuMedium
+      display: block
+    p
+      color: #1a1a1a
+      margin-top: 70px
+      font: 18px $UbuntuRegular
+      line-height: 40px
+    .select_wrap
+      width: 384px
+      position: relative
+    .openSelect
+      margin-top: 100px
+      height: 69px
+      width: 100%
+      font: 18px $UbuntuRegular
+      color: #fff
+      background-color: #00b1fa
+      border-radius: 5px
+      display: flex
+      padding: 0 34px
+      border: none
+      text-transform: uppercase
+      font-weight: 800
+      position: relative
+      justify-content: space-between
+      &.open
+        &:after
+          transform: rotate(0deg)
+          top: -8px
+      &:after
+        content: ''
+        width: 0
+        height: 0
+        top: 3px
+        position: relative
+        border-style: solid
+        border-width: 12px 12px 12px
+        transform: rotate(180deg)
+        border-color: transparent transparent #fff transparent
+      &:hover
+        cursor: pointer
+
+    .selectMenu
+      background-color: #f5f5f5
+      border-radius: 5px
+      margin-top: 3px
+      padding: 0
+      transition: all .3s ease
+      opacity: 0
+      visibility: hidden
+      position: absolute
+      width: 100%
+      height: auto
+      &.open
+        opacity: 1
+        visibility: visible
+      &:hover
+
+      li
+        font: 18px $UbuntuRegular
+        padding: 10px 34px
+        font-weight: 800
+        transition: all .3s ease
+        &:hover
+          cursor: pointer
+          background: #00b1fa
+        &.selected
+          background: #00b1fa
+          color: #fff
+      li + li
+        margin-top: 5px
+
+  .partner_logo
+    width: 623px
+
+
+
+
