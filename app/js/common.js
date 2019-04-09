@@ -24444,18 +24444,15 @@ const dataExpected = {
 
   "S": {
     "SPC": {
-      "WAR": {
-        "battleDimension": "P",
-        "code": ["------", "S-----"]
-      }
+      "codingScheme": "WAR",
+      "battleDimension": "P",
+      "code": ["------", "S-----"]
     },
 
     "AIRTRK": {
-      "WAR": {
-        "codingScheme": "WAR",
-        "battleDimension": "A",
-        "code": ["------", "M-----"]
-      }
+      "codingScheme": "WAR",
+      "battleDimension": "A",
+      "code": ["------", "M-----"]
     }
   }
 };
@@ -24484,7 +24481,7 @@ function createReversedData(standartJson) {
           data[codeSchemeSymbol][battleDimension], {
               "codingScheme": codeScheme,
               "code": [],
-              "battle dimension": battleDimension
+              "battle dimension": battleDimensionSymbol
             }
         );
 
@@ -24505,15 +24502,37 @@ createReversedData(standartJson);
 console.log(data)
 console.log('~~~~~~~~~~~~~~~~~~~')
 
+function checkHasSameFunctionID(functionIdCodes, functionIdCode) {
+  return functionIdCodes.some((i) => i === functionIdCode)
+}
+
 function getIdForDropdown(iconCode) {
   const codingSchemeCode = iconCode[0];
   const affiliationCode = iconCode[1];
   const battleDimensionCode = iconCode[2];
   const statusCode = iconCode[3];
   const functionIdCode = iconCode.substr(4, 6);
-
   const codingSchemeData = data[codingSchemeCode];
-  console.log(codingSchemeData)
+
+  /*Output data*/
+  let codingSchemeID = '';
+  let battleDimensionCodeID = '';
+  let functionIDindex = '';
+
+
+  Object.keys(codingSchemeData).forEach((typesCodingSchemeData) => {
+    const functionIdCodes = codingSchemeData[typesCodingSchemeData].code;
+    const battleDimensionCodes = codingSchemeData[typesCodingSchemeData]['battle dimension'];
+
+    if(checkHasSameFunctionID(functionIdCodes, functionIdCode) && battleDimensionCodes === battleDimensionCode) {
+      battleDimensionCodeID = typesCodingSchemeData
+      codingSchemeID = codingSchemeData[typesCodingSchemeData].codingScheme
+      functionIDindex = functionIdCodes.indexOf(functionIdCode)
+    }
+  });
+
+  console.log(codingSchemeID, battleDimensionCodeID, functionIDindex)
+
 }
 getIdForDropdown('SPPA--------');
 
