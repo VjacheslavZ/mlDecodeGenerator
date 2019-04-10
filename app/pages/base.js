@@ -24441,7 +24441,6 @@ const standartJson = {
 
 const dataExpected = {
   /*code scheme*/
-
   "S": {
     "SPC": {
       "codingScheme": "WAR",
@@ -24459,7 +24458,7 @@ const dataExpected = {
 
 const data = {};
 
-function createReversedData(standartJson) {
+function createDataForDecoding(standartJson) {
   Object.keys(standartJson).forEach((codeScheme) => {
     //console.log(codeScheme) //3
     Object.keys(standartJson[codeScheme]).forEach((battleDimension) => {
@@ -24497,7 +24496,7 @@ function createReversedData(standartJson) {
   })
 }
 
-createReversedData(standartJson);
+createDataForDecoding(standartJson);
 
 console.log(data)
 console.log('~~~~~~~~~~~~~~~~~~~')
@@ -24518,7 +24517,8 @@ function getIdForDropdown(iconCode) {
   let codingSchemeID = '';
   let battleDimensionCodeID = '';
   let functionIDindex = '';
-
+  let symbolModifier1 = '';
+  let symbolModifier2 = ''
 
   Object.keys(codingSchemeData).forEach((typesCodingSchemeData) => {
     const functionIdCodes = codingSchemeData[typesCodingSchemeData].code;
@@ -24534,4 +24534,4 @@ function getIdForDropdown(iconCode) {
   console.log(codingSchemeID, battleDimensionCodeID, functionIDindex)
 
 }
-getIdForDropdown('SPPA--------');
+getIdForDropdown('IPPASR------');
